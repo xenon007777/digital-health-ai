@@ -10,6 +10,7 @@ st.title("📱 Digital Health Risk Predictor")
 st.markdown("### Analyze your screen habits, health & productivity")
 
 df = pd.read_excel("synthetic_dataset.xlsx")
+df = df.fillna("Unknown")
 
 st.subheader("📊 Dataset Insights")
 
