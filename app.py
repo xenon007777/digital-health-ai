@@ -62,7 +62,7 @@ def train_model():
 
     return model_issue, model_prod, X.columns, le_dict
 
-model_issue, model_prod, features = train_model()
+model_issue, model_prod, features, le_dict = train_model()
 
 st.subheader("🧠 Check Your Risk")
 
