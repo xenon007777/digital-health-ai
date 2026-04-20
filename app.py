@@ -39,9 +39,20 @@ for col in df_encoded.columns:
 
 @st.cache_resource
 def train_model():
-    X = df_encoded.drop(['Issue', 'Productivity'], axis=1)
-    y_issue = df_encoded['Issue']
-    y_prod = df_encoded['Productivity']
+
+    df_clean = df.copy()
+
+    # Encode everything safely
+    le_dict = {}
+
+    for col in df_clean.columns:
+        le = LabelEncoder()
+        df_clean[col] = le.fit_transform(df_clean[col].astype(str))
+        le_dict[col] = le
+
+    X = df_clean.drop(['Issue', 'Productivity'], axis=1)
+    y_issue = df_clean['Issue']
+    y_prod = df_clean['Productivity']
 
     model_issue = RandomForestClassifier(n_estimators=200, max_depth=10)
     model_issue.fit(X, y_issue)
@@ -49,7 +60,7 @@ def train_model():
     model_prod = RandomForestClassifier(n_estimators=200, max_depth=10)
     model_prod.fit(X, y_prod)
 
-    return model_issue, model_prod, X.columns
+    return model_issue, model_prod, X.columns, le_dict
 
 model_issue, model_prod, features = train_model()
 
