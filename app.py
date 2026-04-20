@@ -70,7 +70,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     year = st.selectbox("Year", df['Year'].unique())
-    age = st.slider("Age", int(df['Age'].min()), int(df['Age'].max()), 18)
+    age = st.slider("Age", 16, 30, 18)            
     branch = st.selectbox("Branch", df['Branch'].unique())
     gender = st.selectbox("Gender", df['Gender'].unique())
     screen = st.selectbox("Screen Time", df['ScreenTime'].unique())
