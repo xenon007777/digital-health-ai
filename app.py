@@ -36,16 +36,18 @@ st.write("This section shows patterns observed in student screen usage and healt
 col1, col2 = st.columns(2)
 
 with col1:
-    fig1 = plt.figure()
-    df['ScreenTime'].value_counts().plot(kind='bar')
-    plt.title("Screen Time Distribution")
-    st.pyplot(fig1)
+    year = st.selectbox("Year", df['Year'].unique())
+    age = st.slider("Age", 16, 30, 18)
+    branch = st.selectbox("Branch", df['Branch'].unique())
+    gender = st.selectbox("Gender", df['Gender'].unique())
+    screen = st.selectbox("Screen Time", df['ScreenTime'].unique())
 
 with col2:
-    fig2 = plt.figure()
-    df['Issue'].value_counts().plot(kind='bar')
-    plt.title("Health Issues")
-    st.pyplot(fig2)
+    purpose = st.selectbox("Purpose", df['Purpose'].unique())
+    sleep = st.selectbox("Sleep", df['Sleep'].unique())
+    awareness = st.selectbox("Awareness", df['Awareness'].unique())
+    tool = st.selectbox("Tool Usage", df['ToolUsage'].unique())
+    hygiene = st.selectbox("Digital Hygiene", df['Hygiene'].unique())
 
 le_dict = {}
 df_encoded = df.copy()
