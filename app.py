@@ -130,7 +130,7 @@ if st.button("🚀 Predict"):
     input_df = pd.DataFrame([input_dict])
 
     for col in input_df.columns:
-    if col in le_dict:
+        if col in le_dict:
         input_df[col] = input_df[col].astype(str)
         input_df[col] = input_df[col].apply(
             lambda x: le_dict[col].transform([x])[0] if x in le_dict[col].classes_ else 0
