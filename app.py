@@ -7,12 +7,31 @@ from sklearn.ensemble import RandomForestClassifier
 st.set_page_config(page_title="Digital Health AI", layout="wide")
 
 st.title("📱 Digital Health Risk Predictor")
+st.markdown("""
+### 🧠 What is this?
+
+This AI-powered tool analyzes your daily digital habits and predicts potential health risks and productivity levels.
+
+---
+
+### ⚠️ Why does this matter?
+
+Excessive screen time can lead to:
+- Eye strain 👁️
+- Sleep disturbances 😴
+- Reduced concentration 🧠
+
+This app helps you understand your risk and improve your lifestyle.
+
+---
+""")
 st.markdown("### Analyze your screen habits, health & productivity")
 
 df = pd.read_excel("synthetic_dataset.xlsx")
 df = df.fillna("Unknown")
 
-st.subheader("📊 Dataset Insights")
+st.markdown("## 📊 Dataset Insights")
+st.write("This section shows patterns observed in student screen usage and health effects.")
 
 col1, col2 = st.columns(2)
 
@@ -64,7 +83,8 @@ def train_model():
 
 model_issue, model_prod, features, le_dict = train_model()
 
-st.subheader("🧠 Check Your Risk")
+st.markdown("## 🧠 Predict Your Health Risk")
+st.write("Enter your lifestyle details below to get AI-based predictions.")
 
 col1, col2 = st.columns(2)
 
