@@ -130,9 +130,12 @@ if st.button("🚀 Predict"):
     input_df = pd.DataFrame([input_dict])
 
     for col in input_df.columns:
-        if col in le_dict:
-            input_df[col] = le_dict[col].transform(input_df[col])
-
+    if col in le_dict:
+        input_df[col] = input_df[col].astype(str)
+        input_df[col] = input_df[col].apply(
+            lambda x: le_dict[col].transform([x])[0] if x in le_dict[col].classes_ else 0
+        )
+        
     issue_pred = model_issue.predict(input_df)[0]
     prod_pred = model_prod.predict(input_df)[0]
 
