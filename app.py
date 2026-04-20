@@ -32,6 +32,24 @@ df = df.fillna("Unknown")
 
 st.markdown("## 📊 Dataset Insights")
 st.write("This section shows patterns observed in student screen usage and health effects.")
+
+import matplotlib.pyplot as plt
+
+col1, col2 = st.columns(2)
+
+# Screen Time Distribution
+with col1:
+    st.subheader("Screen Time Distribution")
+    fig1, ax1 = plt.subplots()
+    df['ScreenTime'].value_counts().plot(kind='bar', ax=ax1)
+    st.pyplot(fig1)
+
+# Health Issues
+with col2:
+    st.subheader("Health Issues")
+    fig2, ax2 = plt.subplots()
+    df['Issue'].value_counts().plot(kind='bar', ax=ax2)
+    st.pyplot(fig2)
     
 le_dict = {}
 df_encoded = df.copy()
