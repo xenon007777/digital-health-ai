@@ -98,8 +98,16 @@ with col1:
 with col2:
     purpose = st.selectbox("Purpose", df['Purpose'].unique())
     sleep = st.selectbox("Sleep", ["5-6 hours", "6-7 hours", "7+ hours"])  
-    awareness = st.selectbox("Awareness", ["Low", "Medium", "High"])       
-    tool = st.selectbox("Tool Usage", df['ToolUsage'].unique())
+    awareness = st.selectbox(
+        "Awareness (knowledge about digital health)",
+        ["Low", "Medium", "High"],
+        help="How aware are you about screen-related health risks like eye strain, sleep issues, etc."
+    )       
+    tool = st.selectbox(
+        "Tool Usage (protective tools)",
+        ["Yes", "No", "Sometimes"],
+        help="Do you use tools like blue light filters, screen time trackers, or night mode?"
+    )
     hygiene = st.selectbox("Digital Hygiene", ["Poor", "Average", "Good"])
     
 if st.button("🚀 Predict"):
