@@ -105,7 +105,7 @@ with col2:
     )       
     tool = st.selectbox(
         "Tool Usage (protective tools)",
-        ["Yes", "No", "Sometimes"],
+        ["Yes", "No"],
         help="Do you use tools like blue light filters, screen time trackers, or night mode?"
     )
     hygiene = st.selectbox("Digital Hygiene", ["Poor", "Average", "Good"])
