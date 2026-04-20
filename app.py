@@ -77,11 +77,11 @@ with col1:
 
 with col2:
     purpose = st.selectbox("Purpose", df['Purpose'].unique())
-    sleep = st.selectbox("Sleep", df['Sleep'].unique())
-    awareness = st.selectbox("Awareness", df['Awareness'].unique())
+    sleep = st.selectbox("Sleep", ["5-6 hours", "6-7 hours", "7+ hours"])  
+    awareness = st.selectbox("Awareness", ["Low", "Medium", "High"])       
     tool = st.selectbox("Tool Usage", df['ToolUsage'].unique())
-    hygiene = st.selectbox("Digital Hygiene", df['Hygiene'].unique())
-
+    hygiene = st.selectbox("Digital Hygiene", ["Poor", "Average", "Good"])
+    
 if st.button("🚀 Predict"):
 
     input_dict = {
