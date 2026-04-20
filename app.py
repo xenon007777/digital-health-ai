@@ -32,22 +32,6 @@ df = df.fillna("Unknown")
 
 st.markdown("## 📊 Dataset Insights")
 st.write("This section shows patterns observed in student screen usage and health effects.")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    year = st.selectbox("Year", df['Year'].unique(), key="year")
-    age = st.slider("Age", 16, 30, 18, key="age")
-    branch = st.selectbox("Branch", df['Branch'].unique(), key="branch")
-    gender = st.selectbox("Gender", df['Gender'].unique(), key="gender")
-    screen = st.selectbox("Screen Time", df['ScreenTime'].unique(), key="screen")
-
-with col2:
-    purpose = st.selectbox("Purpose", df['Purpose'].unique(), key="purpose")
-    sleep = st.selectbox("Sleep", df['Sleep'].unique(), key="sleep")
-    awareness = st.selectbox("Awareness", df['Awareness'].unique(), key="awareness")
-    tool = st.selectbox("Tool Usage", df['ToolUsage'].unique(), key="tool")
-    hygiene = st.selectbox("Digital Hygiene", df['Hygiene'].unique(), key="hygiene")
     
 le_dict = {}
 df_encoded = df.copy()
